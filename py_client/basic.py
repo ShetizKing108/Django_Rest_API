@@ -14,3 +14,4 @@ print(get_response.json())
 """We can send our data as either JSON or raw 'data' and it can be seen reflected in our print statement. 
 EX: get_response = requests.get(endpoint, json = {"query" : "Hello World"}) or
     get_response = requests.get(endpoint, data = {"query" : "Hello World"}) In both case the data we sent will be considered differently"""
+print(get_response.status_code()) # This shows uss the status code like 200 or 404 etc
