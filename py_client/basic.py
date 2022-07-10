@@ -4,7 +4,7 @@ import requests
 #endpoint = "https://httpbin.org/status/200/" #Sample endpoints( locations of the resources,)
 #endpoint = "https://httpbin.org/"
 #endpoint = "https://httpbin.org/anything"
-endpoint = "http://127.0.0.1:8000/"  # We are trying on our own Django endpoint. If we run with the server down, it will show error..'refusesd to connect' just like website
+endpoint = "http://127.0.0.1:8000/api/"  # We are trying on our own Django endpoint. If we run with the server down, it will show error..'refusesd to connect' just like website
 
 
 
@@ -14,7 +14,7 @@ print(get_response.text) # Print source code/raw text code. but by adding '/anyt
 # HTPP Request -> HTML
 # REST API HTPP Request -> JSON/XML
 # JSON is very similar to python Dict(only diff is in py 'null' will become 'none') and can be converted to Dict as follows
-# print(get_response.json())
+print(get_response.json() ['message'])
 
 """We can send our data as either JSON or raw 'data' and it can be seen reflected in our print statement. 
 EX: get_response = requests.get(endpoint, json = {"query" : "Hello World"}) or
