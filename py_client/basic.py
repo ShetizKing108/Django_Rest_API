@@ -8,7 +8,8 @@ endpoint = "http://127.0.0.1:8000/api/"  # We are trying on our own Django endpo
 
 
 
-get_response = requests.get(endpoint) #HTTP request is made and stored in a variable called get_response
+get_response = requests.get(endpoint, parms={"abc": 123}, json={"query": "Hello world"}) 
+#HTTP request is made and stored in a variable called get_response. Also we can pass our own JSON data using json ="..."
 print(get_response.text) # Print source code/raw text code. but by adding '/anyting' ie.REST API we get the data that we can use(JSON or XML)
 
 # HTPP Request -> HTML
