@@ -1,10 +1,14 @@
-from statistics import mode
+#from statistics import mode
 from django.forms import model_to_dict
-from django.shortcuts import render
-from django.http import JsonResponse
+#from django.shortcuts import render
+#from django.http import JsonResponse
 import json
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 from products.models import Product
 
+
+@api_view(["GET"]) #This decorator and returning the Response make this a Django Rest Framework
 def api_home(request, *args, **kwargs):
     
     #The request we are taking in as parameter above is the HTTP instance request from django
@@ -29,6 +33,7 @@ def api_home(request, *args, **kwargs):
     # now we will grab the data from the app we have built "products"
     model_data = Product.objects.all().order_by("?").first() #This makes random queryset and grabs one of the value
     data = {}
+    """
     if model_data:
         # data['id'] = model_data.id
         # data["title"] = model_data.title
@@ -39,3 +44,7 @@ def api_home(request, *args, **kwargs):
 
         # now we want our model instance(model_data) to be turned into a python Dict and then return JSON to the client
     return JsonResponse(data)
+    """
+    if model_data:
+        data = model_to_dict(model_data, fields= ['id', 'title'])
+    return Response(data)
